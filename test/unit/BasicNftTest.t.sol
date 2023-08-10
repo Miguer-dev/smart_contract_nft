@@ -14,7 +14,22 @@ contract BasicNftTest is Test {
     uint256 constant STARTTING_BALANCE = 10 ether;
     uint8 constant GAS_PRICE = 1;
     string constant TOKEN_URI =
-        "https://ipfs.io/ipfs/QmTfABTffcgvqKjUv1pK4LULLykwWGPgEJdm167yRwzQwg?filename=shiba-inu.json";
+        "ipfs://bafybeicpba3h4herwwg2ofcbovzmez4nyilb42ct3oiiox7y25dxhlfx44/?filename=shiba-inu.json";
+
+    /*
+    Obtaining the TokenURI:
+    1. From the IPFS app, locate the file.json and obtain its link using the "Share Link" option:
+    https://ipfs.io/ipfs/QmTfABTffcgvqKjUv1pK4LULLykwWGPgEJdm167yRwzQwg?filename=shiba-inu.json
+
+    2.Remove "https://ipfs.io/" from the link and paste the remaining part into the browser: 
+    "ipfs://QmTfABTffcgvqKjUv1pK4LULLykwWGPgEJdm167yRwzQwg?filename=shiba-inu.json"
+
+    3.The link in the browser will change to: 
+    "https://bafybeicpba3h4herwwg2ofcbovzmez4nyilb42ct3oiiox7y25dxhlfx44.ipfs.dweb.link/?filename=shiba-inu.json"
+
+    4.Replace "https://" with "ipfs://" and remove the ".ipfs.dweb.link" part, obtaining the final link:
+    "ipfs://bafybeicpba3h4herwwg2ofcbovzmez4nyilb42ct3oiiox7y25dxhlfx44/?filename=shiba-inu.json"
+    */
 
     function setUp() external {
         deployBasicNft = new DeployBasicNft();

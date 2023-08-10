@@ -9,7 +9,7 @@ import {DevOpsTools} from "lib/foundry-devops/src/DevOpsTools.sol";
 
 contract MintNft is Script {
     string private constant TOKEN_URI =
-        "https://ipfs.io/ipfs/QmTfABTffcgvqKjUv1pK4LULLykwWGPgEJdm167yRwzQwg?filename=shiba-inu.json";
+        "ipfs://bafybeicpba3h4herwwg2ofcbovzmez4nyilb42ct3oiiox7y25dxhlfx44/?filename=shiba-inu.json";
 
     function run() external {
         address mostRecentlyDeployed = DevOpsTools.get_most_recent_deployment("BasicNft", block.chainid);
