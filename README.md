@@ -4,8 +4,8 @@ This project built with Foundry, allows to deploy a NFTs contracts. Here you can
 
 <br/>
 <p align="center">
-<img src="./images/dogNft/shiba-inu.png" width="225" alt="NFT Pug">
-<img src="./images/dynamicNft/star.svg" width="225" alt="NFT Happy">
+<img src="./img/dogNft/shiba-inu.png" width="225" alt="NFT Pug">
+<img src="./img/dynamicNft/star.svg" width="225" alt="NFT Happy">
 </p>
 <br/>
 
@@ -74,7 +74,7 @@ forge test
 or 
 
 ```
-forge test --fork-url $SEPOLIA_RPC_URL
+forge test --fork-url $GOERLI_RPC_URL
 ```
 
 ### Test Coverage
@@ -92,7 +92,7 @@ You'll want to set your `GOERLI_RPC_URL` and `PRIVATE_KEY` as environment variab
 
 - `PRIVATE_KEY`: The private key of your account (like from [metamask](https://metamask.io/)). **NOTE:** FOR DEVELOPMENT, PLEASE USE A KEY THAT DOESN'T HAVE ANY REAL FUNDS ASSOCIATED WITH IT.
   - You can [learn how to export it here](https://metamask.zendesk.com/hc/en-us/articles/360015289632-How-to-Export-an-Account-Private-Key).
-- `SEPOLIA_RPC_URL`: This is url of the goerli testnet node you're working with. You can get setup with one for free from [Alchemy](https://alchemy.com/?a=673c802981)
+- `GOERLI_RPC_URL`: This is url of the goerli testnet node you're working with. You can get setup with one for free from [Alchemy](https://alchemy.com/?a=673c802981)
 
 Optionally, add your `ETHERSCAN_API_KEY` if you want to verify your contract on [Etherscan](https://etherscan.io/).
 
