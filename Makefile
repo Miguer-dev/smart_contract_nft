@@ -1,14 +1,14 @@
 -include .env
 
-.PHONY: all test clean deploy fund help install snapshot format anvil mint
+.PHONY: all test clean deploy-puppy deploy-star fund help install snapshot format anvil mint-puppy mint-star
 
-DEFAULT_ANVIL_KEY := 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+DEFAULT_ANVIL_KEY := 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
 
 help:
 	@echo "Usage:"
-	@echo "  make deploy [ARGS=...]\n    example: make deploy ARGS=\"--network goerli\""
+	@echo "  make deploy-star [ARGS=...]\n    example: make deploy-star ARGS=\"--network goerli\""
 	@echo ""
-	@echo "  make mint [ARGS=...]\n    example: make deploy ARGS=\"--network goerli\""
+	@echo "  make mint-puppy [ARGS=...]\n    example: make mint-puppy ARGS=\"--network goerli\""
 
 all: clean remove install update build
 
@@ -33,14 +33,22 @@ format :; forge fmt
 
 anvil :; anvil -m 'test test test test test test test test test test test junk' --steps-tracing --block-time 1
 
-NETWORK_ARGS := --rpc-url http://localhost:8545 --private-key $(DEFAULT_ANVIL_KEY) --broadcast
+NETWORK_ARGS := --rpc-url http://127.0.0.1:8545 --private-key $(DEFAULT_ANVIL_KEY) --broadcast
 
 ifeq ($(findstring --network goerli,$(ARGS)),--network goerli)
-	NETWORK_ARGS := --rpc-url $(GOERLI_RPC_URL) --private-key $(GOERLI_PRIVATE_KEY) --broadcast --verify --etherscan-api-key $(ETHERSCAN_API_KEY) -vvvv
+	NETWORK_ARGS := --rpc-url $(GOERLI_RPC_URL) --private-key $(PRIVATE_KEY) --broadcast --verify --etherscan-api-key $(ETHERSCAN_API_KEY) -vvvv
 endif
 
-deploy:
+deploy-puppy:
 	@forge script script/DeployBasicNft.s.sol:DeployBasicNft $(NETWORK_ARGS)
 
-mint:
-	@forge script script/Interactions.s.sol:MintNft $(NETWORK_ARGS)
+deploy-star:
+	@forge script script/DeployStarNft.s.sol:DeployStarNft $(NETWORK_ARGS)
+
+mint-puppy:
+	@forge script script/Interactions.s.sol:MintPuppyNft $(NETWORK_ARGS)
+
+mint-star:
+	@forge script script/Interactions.s.sol:MintStarNft $(NETWORK_ARGS)
+
+	
